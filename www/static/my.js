@@ -35,14 +35,13 @@ function onSuccess(position) {
 //var apipath='http://127.0.0.1:8000/mreporting/';
 //var apipath=location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/mrepmobile/mrep_order_new/";
 var apipath="http://m.businesssolutionapps.com/mrepmobile/mrep_order_new/";
-m.businesssolutionapps.com
 var cidValue=''
 var repid='';
 var password='';
 var loginResult='';
 var memListStr='';
 
-var errror_str='Network Error. Please Check that you have Internet active or Mobile have network signal. You can go to a place where network is available and submit the Data.';
+var errror_str='Network Not Available. Please Check that you have Internet active or Mobile have network signal. You can go to a place where network is available and submit the Data.';
 
 //========================================
 // $(document).ready(function(){
