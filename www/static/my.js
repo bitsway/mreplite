@@ -33,15 +33,15 @@ function onSuccess(position) {
 //var apipath='http://127.0.0.1:8000/mreporting/sync_mobile/';
 //var dmpathUrl= "http://localhost/dmpath/index.php?CID=";
 //var apipath='http://127.0.0.1:8000/mreporting/';
-//var apipath=location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/mrepmobile/mrep_order_new/";
-var apipath="http://m.businesssolutionapps.com/mrepmobile/mrep_order_new/";
+var apipath=location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/mrepmobile/mrep_order_new/";
+//var apipath="http://m.businesssolutionapps.com/mrepmobile/mrep_order_new/";
 var cidValue=''
 var repid='';
 var password='';
 var loginResult='';
 var memListStr='';
 
-var errror_str='Network Not Available. Please Check that you have Internet active or Mobile have network signal. You can go to a place where network is available and submit the Data.';
+var errror_str='Network Error. Please Check that you have Internet active or Mobile have network signal.';
 
 //========================================
 // $(document).ready(function(){
@@ -78,51 +78,24 @@ $('#basicSync').click(function() {
 		 repid=$("#repid").val() ;
 		 password=$("#password").val() ;
 		 if (cidValue==""||repid==""||password==""){
-			 $("#mySyncError").html('Required Basic Sync Value');	
+			 $("#mySyncError").html('Authorization Failed');	
 		 }else{			 
-			 //=======================
-			 /*$.ajax({
-			 //http://127.0.0.1:8000/mreporting/sync_mobile/syncRepJMobileSS?cid=DELTA&repid=13073&mobile=8801234567890&password=123
-			 url: dmpathUrl+cidValue+'&HTTPPASS=e99business321cba',
-			 success: function(dmresult) {
-					
-					if (dmresult==''){
-						alert ('Sorry Network not available. If available, required base url settings');
-					}
-					//<start>http://127.0.0.1:8000/mreporting/<end>
-					var urlPath = dmresult.substring(dmresult.indexOf("<start>"),dmresult.indexOf("<end>"));			
-					if (urlPath==''){
-						alert ('Required base url settings');
-												
-					}else{
-						//http://127.0.0.1:8000/mreporting/
-						apipath=urlPath;
-						alert (apipath);
-					}
-		  	  },
-			  error: function(result) {
-				alert(errror_str);
-			  }
-			  
-			});//end ajax*/
-			 
-		 //===============
+
 		if (apipath==''){
-			alert ('Base url not available');
+			$("#mySyncError").html('Error: 10001 Configuration Data not Found. Please contact your system admin.');
+			
 		}else{
 			 //alert(apipath+'syncRepJMobileSS?cid='+cidValue+'&repid='+repid+'&mobile=8801234567890&password='+password);
-			// $("#mySyncError").html(apipath+'syncRepSS?cid='+cidValue+'&repid='+repid+'&mobile=8801234567890&password='+password) ;
+			 //$("#mySyncError").html(apipath+'syncRepSS?cid='+cidValue+'&repid='+repid+'&mobile=8801234567890&password='+password) ;
 			 $.ajax({
 				 //http://127.0.0.1:8000/mreporting/sync_mobile/syncRepSS?cid=DELTA&repid=13073&mobile=8801234567890&password=123
 				 //url: apipath+'sync_mobile/syncRepSS?cid=DEMO&dpid='+mobile+'&mobile=8801234567890&password='+password,
 				 url: apipath+'syncRepSS?cid='+cidValue+'&repid='+repid+'&mobile=8801234567890&password='+password,
 				 success: function(result) {
 						loginResult=result
-						
 						if (loginResult==''){
-							alert ('Sorry Network not available');
+							$("#mySyncError").html('Error: 10002 Network Time out');
 						}
-						
 						var loginResultArray = loginResult.split('rdrd');			
 						if (loginResultArray[0]=='YES'){
 							//alert (loginResult);
@@ -141,18 +114,11 @@ $('#basicSync').click(function() {
 							localStorage.itemDivCount=dvCount;
 							localStorage.itemCombo=itemCombo;
 							
-							
-							$("#mySyncError").text("Basic Synced Successfully Done");
+							//$("#mySyncError").html(localStorage.routeList);
+							$("#mySyncError").html("Authorization and basic data synchronized. Please Sync route.");
 							$("#cid").val("") ;
 							$("#repid").val("") ;
 							$("#password").val("") ;
-							
-							// $('#routeList').empty();
-							// $('#routeList').append(localStorage.routeList).trigger('create');
-							
-							
-							
-							// alert (routeArray.length);
 							
 							
 							// ================end route================
@@ -166,11 +132,11 @@ $('#basicSync').click(function() {
 							var url = "#pageSync";      
 							
 							$(location).attr('href',url);
-							$("#mySyncError").html('Authentication Error');			
+							$("#mySyncError").html('Authentication Error. Please contact your company system admin');			
 						}
 				  },
 				  error: function(result) {
-					alert(errror_str);
+					  $("#mySyncError").html(errror_str);
 				  }
 				  
 			});//end ajax
@@ -179,7 +145,7 @@ $('#basicSync').click(function() {
 		 
 	});//end check click
 	
-	//================================
+	//================================set_route_combo
 	
 	$('#routeSync').click(function() {
 		$("#routeID").val();
@@ -317,16 +283,12 @@ function clearSync() {
 //==============client sync end========
 
 
-
-//================== Client List
-function clientList() {	
+function refreshclientList() {	
+	$('#clientID_S').empty();
 	
-	// ====================client combo==================			
-							
-				
-	$('#clientID').empty();
+	$("#clientSearch").val('');
 	var clientArray=localStorage.clientListStr.split('rtrt')	
-	var ob = $("#clientID");
+	var ob = $("#clientID_S");
 	var value="";
 	var text="Select Client";
 	// ob.prepend("<option value="+ blank +">" + text + "</option>");
@@ -339,6 +301,32 @@ function clientList() {
 		 // alert (client_id);
 		var client_name=clientIdNameArray[0]
 		ob.prepend("<option value="+ client_name+'-'+client_id +">" + client_name +"(" +client_id +")" + "</option>");
+		}
+	
+	
+}
+//================== Client List
+function clientList() {	
+	
+	// ====================client combo==================			
+							
+				
+	$('#clientID_S').empty();
+	var clientArray=localStorage.clientListStr.split('rtrt')	
+	var ob = $("#clientID_S");
+	var value="";
+	var text="Select Client";
+	// ob.prepend("<option value="+ blank +">" + text + "</option>");
+	
+	for (var c=0; c<clientArray.length-1; c++){
+		
+		var clientIdNameArray = clientArray[c].split('-');
+		 
+		var client_id=clientIdNameArray[1]
+		var client_name=clientIdNameArray[0]
+		
+		//alert ("<option value="+ client_name+','+client_id +">" + client_name +"(" +client_id +")" + "</option>");
+		ob.prepend("<option value='"+ client_name+'_'+client_id +"'>" + client_name +"(" +client_id +")" + "</option>");
 		}						
 	var url = "#pageClient";
 	$(location).attr('href',url);
@@ -369,15 +357,15 @@ function getOrder() {
 		$("#clientErrMsg").text("");
 		// $("#itemListDiv_hidden").html("")
 		// $("#itemListDiv").html("")
-		var clientIdName= $("#clientID").val();
-		//alert (clientIdName);
+		var clientIdName= $("#clientID_S").val();
+	//	alert (clientIdName);
 //		var clientIdName=clientIdName;
 		var itemList=localStorage.itemList;
 		//alert(itemList);
 		if (itemList==""){
-			$("#clientErrMsg").text("Item not available");	
+			$("#clientErrMsg").text("Client not available");	
 		}else{	
-				var clientArray=clientIdName.split("-");
+				var clientArray=clientIdName.split("_");
 				var clientName=clientArray[0];
 				var clientId=clientArray[1];
 				//alert (clientIdName);
@@ -551,20 +539,21 @@ navigator.app.exitApp();
 //==============route list=====
 
 function set_route_combo() {
-	// alert (localStorage.routeList);
+//	alert ('nadira');
 	var routeArray=localStorage.routeList.split('rtrt')	;
 	var ob = $("#routeID");
-	// alert ('nadira')
+	
 	$('#routeID').empty()
 	
 	var value="";
 	var text="Select Route";
 	// ob.prepend("<option value="+ blank +">" + text + "</option>");
+	//alert (routeArray.length);
 	for (var r=0; r<routeArray.length-1; r++){
 		var routeIdNameArray = routeArray[r].split('-');
 		var route_id=routeIdNameArray[0]
 		var route_name=routeIdNameArray[1]
-		ob.append("<option value="+ route_id+'-'+route_name +">" + route_name +"(" +route_id +")" + "</option>");
+		ob.append("<option value='"+ route_id+'-'+route_name +"'>" + route_name +"(" +route_id +")" + "</option>");
 		}			
 	// ob.prepend("<option value="+ blank +">" + text + "</option>");						
 	  //create route list=========

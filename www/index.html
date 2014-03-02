@@ -10,7 +10,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>MRep-Order</title>
+        <title>M-Reporting</title>
 
 		
 
@@ -114,9 +114,11 @@
 
 			<a  data-role="button" href="#leftpanel3" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
 
-                <a data-role="button" href="#pagelogin" class="ui-btn-right" onClick="exit()">Exit</a>
+                <a data-role="button" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-power ui-btn-icon-notext"  onClick="exit()"></a>
+                
+                
 
-                <h3>Home</h3>
+                <h5>M-Reporting</h5>
 
             </div>
 
@@ -174,7 +176,7 @@
 
 
 
-	<div data-theme="d" data-role="footer" data-position="fixed"></div>
+	<div data-theme="d" data-role="footer" data-position="fixed" style="font-family:Arial, Helvetica, sans-serif; font-size:xx-small; color:#FFF; text-align:center">M-Reporting-DEMO140203</div> 
 
 	
 
@@ -198,7 +200,7 @@
 
 						
 
-			<li><a href="#pageSyncRoute">Sync Route</a></li>
+			<li><a href="#pageSyncRoute" onClick="set_route_combo();">Sync Route</a></li>
 
 			<li><a href="#pageSync">Authorization</a></li>
 
@@ -1500,145 +1502,44 @@
 
 		 </div><!--/page-->   
 
+        
+        
         <!--===================== pageSync ==================-->
 
 		<div data-theme="d" data-role="page" id="pageSync">
-
+        
             <div data-theme="d" data-role="header" data-position="fixed">
-
-			
-
-				<a  data-role="button" href="#leftpanel_sync" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
-
-                <a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">
-
-						Back
-
-					</a>
-
+              <a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>               
+              <a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>
                 <h3>Authorization</h3>
-
             </div>
 
-			
-
             <div data-role="content">
-
-            	<div id="mySyncError" style="color:#C00"></div>
-
-                
-
-            	
-
-                <!--<div data-role="fieldcontain">
-
-					   <a data-role="button" data-transition="slide" onClick="getClientList()" data-icon="arrow-r" data-iconpos="right" >Sync</a>  
-
-                 </div>-->
-
-                
-
-                
-
-              
-
+            	<div id="mySyncError" style="color:#03C"></div>
 				<ul data-role="listview" data-divider-theme="d" data-inset="true">
-
                     <li data-role="list-divider" role="heading">Authorization</li>
-
 				</ul>
-
 				<form>
-
-                <!--<label for="cid">CID</label>-->
-
 				<input name="cid" id="cid"  value="" type="text" placeholder="CID">	
-
-                
-
-				<!--<label for="repid">User ID</label>-->
-
 				<input name="repid" id="repid"  value="" type="text" placeholder="User ID">	
-
-				
-
-				<!--<label for="password">Password </label>-->
-
 				<input type="password" name="" id="password"  value="" placeholder="Password">	
-
-				
-
 				<input type="submit" id="basicSync" name="basicSync" value="Submit" >
-
 				</form>
-
                 <br>
 
                 <ul data-role="listview" data-divider-theme="d" data-inset="true">
-
                     <li data-role="list-divider" role="heading">Clear Authorization</li>
-
 				</ul>
-
-                <!--<input type="submit" id="clearSync" name="clearSync" value="Clear Sync" > -->
-
-                <div data-role="fieldcontain">
-
-					   <a data-role="button" href="#pageHome" class="ui-btn-right" onClick="clearSync()" style="width:100%">Clear Authorization</a>
-
-              </div>
-
-                 
-
+                <input type="submit" id="clearSync" onClick="clearSync()" name="clearSync" value="Clear Sync" > 
                 <br><br><br><br><br><br><br><br><br><br>
-
-                       
-
             </div>
-
-			
-
-<!--==========footer======-->	
-
-<div data-theme="d" data-role="footer" data-position="fixed">
+            
+            <!--==========footer======-->	
+            <div data-theme="d" data-role="footer" data-position="fixed">
 
 		
 
 	</div>
-
-	
-
-
-
-
-
-<div data-role="panel" id="leftpanel_sync" data-display="overlay" data-theme="d" >
-
-		<ul data-role="listview">
-
-			<li><a data-role="button" data-transition="slide" onClick="clientList();set_submit_type_ord();" data-icon="arrow-r" data-iconpos="right" >Order</a>   </li>
-
-            <li><a data-role="button" data-transition="slide" onClick="clientList();set_submit_type_del();" data-icon="arrow-r" data-iconpos="right" >Delivery</a>   </li>
-
-			<li style="background-color:#F2F2F2"></p></li>
-
-			
-
-			<li><a href="#pageSyncRoute" onClick="set_route_combo();">Sync Route</a></li>
-
-			
-
-			<li><a href="#pageSync">Authorization</a></li>
-
-		</ul>
-
-		
-
-	</div>	
-
-	
-
-
 
 <!--==============footer end==============-->		
 
@@ -1668,7 +1569,7 @@
 
             <div data-theme="d" data-role="header" data-position="fixed">
 
-				<a  data-role="button" href="#leftpanel_route" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
+				<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
 
                 <a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">
 
@@ -1684,7 +1585,7 @@
 
             <div data-role="content">
 
-            	<div id="mySyncError_route" style="color:#C00"></div>
+            	<div id="mySyncError_route" style="color:#03C"></div>
 
                 
 
@@ -1696,15 +1597,7 @@
 
                 
 
-                <div id="routeList" style="display:none">
-
-                
-
-               
-
-                
-
-                </div>
+                <div id="routeList" style="display:none" ></div>
 
                  <select id="routeID" width="60%" data-native-menu="false">
 
@@ -1720,17 +1613,6 @@
 
    <!-- =================route list start====================-->
 
-<!--	 <select id="filter-menu" data-native-menu="false">
-
-        <option value="SFO">San Francisc</option>
-
-        <option value="LAX">Los Angeles</option>
-
-        <option value="YVR">Vancouver</option>
-
-        <option value="YYZ">Toronto</option>
-
-    </select>-->
 
   	<script>
 
@@ -1910,8 +1792,6 @@
 
 			<li style="background-color:#F2F2F2"></p></li>
 
-			
-
 			<li><a href="#pageSyncRoute" onClick="set_route_combo();">Sync Route</a></li>
 
 			<li style="background-color:#F2F2F2"></p>&nbsp;</p></p>&nbsp;</p></p>&nbsp;</p></li>
@@ -1958,7 +1838,7 @@
 
             <div data-theme="d" data-role="header" data-position="fixed">
 
-				<a  data-role="button" href="#leftpanel_client" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
+				<a  data-role="button" href="#pageHome" class="ui-btn-left ui-btn-icon-notext"><img src="unilogo13.jpg"></a>
 
                 <a data-role="button" data-rel="back"  data-icon="arrow-l" data-iconpos="left" class="ui-btn-right">Back</a>
 
@@ -1982,7 +1862,7 @@
 
 	<!--<ul data-role="listview" data-divider-theme="b" data-inset="true"><li data-role="list-divider" role="heading">Select Outlet </li></ul>-->
 
-    <select id="clientID" width="60%" data-native-menu="false">
+    <select id="clientID_S" width="60%" data-native-menu="false">
 
     <option value="">Select Outlet</option>
 
@@ -2018,11 +1898,11 @@
 
 	$.mobile.document
 
-    .on( "listviewcreate", "#clientID-menu", function( e ) {
+    .on( "listviewcreate", "#clientID_S-menu", function( e ) {
 
         var input,
 
-            listbox = $( "#clientID-listbox" ),
+            listbox = $( "#clientID_S-listbox" ),
 
             form = listbox.jqmData( "filter-form" ),
 
@@ -2032,13 +1912,13 @@
 
         if ( !form ) {
 
-            input = $( "<input data-type='search'></input>" );
+            input = $( "<input id='clientSearch' data-type='search'></input>" );
 
             form = $( "<form></form>" ).append( input );
 
             input.textinput();
 
-            $( "#clientID-listbox" )
+            $( "#clientID_S-listbox" )
 
                 .prepend( form )
 
@@ -2049,18 +1929,20 @@
 
 
         listview.filterable({ input: input });
+		
+		
 
     })
 
 
 
-    .on( "pagebeforeshow pagehide", "#clientID-dialog", function( e ) {
+    .on( "pagebeforeshow pagehide", "#clientID_S-dialog", function( e ) {
 
-        var form = $( "#clientID-listbox" ).jqmData( "filter-form" ),
+        var form = $( "#clientID_S-listbox" ).jqmData( "filter-form" ),
 
             placeInDialog = ( e.type === "pagebeforeshow" ),
 
-            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#routeID-listbox" );
+            destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#clientID_S-listbox" );
 
         form
 
@@ -2073,6 +1955,8 @@
             .end()
 
             .prependTo( destination );
+			
+			
 
     });
 
@@ -2088,7 +1972,7 @@
 
 					
 
-                    <input type="submit" id="clientSync" name="clientSync" value="Next >" onClick="getOrder();" >
+                    <input type="submit" id="clientSync" name="clientSync" value="Next >" onClick="getOrder();refreshclientList();" >
 
                     <br><br><br><br><br><br><br><br><br><br>	
 
@@ -2116,7 +2000,7 @@
 
 
 
-<div data-role="panel" id="leftpanel_client" data-display="overlay" data-theme="d" >
+<!--<div data-role="panel" id="leftpanel_client" data-display="overlay" data-theme="d" >
 
 		<ul data-role="listview">
 
@@ -2130,11 +2014,11 @@
 
 			
 
-			<li><a href="#pageSyncRoute">Sync Route</a></li>
+			<li><a href="#pageSyncRoute" onClick="<a href="#pageSyncRoute" onClick="set_route_combo();">Sync Route</a>">Sync Route</a></li>
 
 			<li><a href="#pageSync">Authorization</a></li>
 
-		</ul>
+		</ul>-->
 
 		
 
@@ -2190,11 +2074,11 @@
 
                     <div id="itemCountDiv">	</div>
 
-                    <div>
+                   <!-- <div>
 
 					<a data-role="button" data-transition="slide" onClick="ordNext()" data-icon="arrow-r" data-iconpos="right"  >Next</a>
 
-					</div>
+					</div>-->
 
 					
 
@@ -2240,67 +2124,31 @@
 
     })
 
-
+	
+  
 
     .on( "pagebeforeshow pagehide", "#itemID_add-dialog", function( e ) {
 
-		
-
-		
-
-		
-
-		//$( e.target )=null;
-
-        var form = $( "#itemID_add-listbox" ).jqmData( "filter-form" ),
-
+	        var form = $( "#itemID_add-listbox" ).jqmData( "filter-form" ),
             placeInDialog = ( e.type === "pagebeforeshow" ),
-
             destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#itemID_add-listbox" );
 
         form
-
             .find( "input" )
-
-
-
             .textinput( "option", "inset", !placeInDialog )
-
             .end()
-
             .prependTo( destination );
 
-	
-
-		
-
-		
-
 		//set focus
-
-		
-
-		
-
-		var item_value=$("#itemID_add").val();
-
 		//$('#itemID_add').selectmenu('refresh',true);
-
-		
-
+		var item_value=$("#itemID_add").val();
+		$("#"+item_value).focus();
 		var myselect = $("#itemID_add");
-
 		myselect[0].selectedIndex =0;
-
-		$("#itemSearch").val('');
-
+		//$("#itemSearch").val('');
 		myselect.selectmenu("refresh", true);
 
-		
-
-		
-
-		$("#"+item_value).focus();	
+			
 
 		
 
@@ -2325,22 +2173,6 @@
 		
 
     });
-
-	/*.out( "pagebeforeshow pagehide", "#itemID_add-dialog", function( e ) {
-
-		$('#itemComboDiv').empty();
-
-		$('#itemComboDiv').append(localStorage.itemCombo).trigger('create');	
-
-	});*/
-
-	
-
-	
-
-
-
-
 
 	</script>
 
@@ -2408,7 +2240,7 @@
 
                 <input name="clientID_1" id="clientID_1" placeholder="" value="" type="hidden">
 
-                <input name="clientNameclientID" id="clientName" placeholder="" value="" type="hidden">
+                <input name="clientName" id="clientName" placeholder="" value="" type="hidden">
 
                 
 
@@ -2428,11 +2260,11 @@
 
             
 
-<!--<div data-theme="a" data-role="footer" role="main" style="font-size:12px;background-color:#CCC; color:#E1E1E1;" data-position="fixed">-->
+<div data-theme="a" data-role="footer" role="main" style="font-size:12px;background-color:#CCC; color:#E1E1E1;" data-position="fixed">
 
- <div id="itemComboDiv" style="float:left; margin-top:5px; display:none"></div>
+ <div id="itemComboDiv" style="float:left; margin-top:5px;"></div>
 
-  <div data-theme="d" data-role="footer" role="main" data-position="fixed">  
+ <!-- <div data-theme="d" data-role="footer" role="main" data-position="fixed">  -->
 
  
 
@@ -2440,7 +2272,7 @@
 
     
 
-	 <!--<a data-role="button" data-transition="slide" onClick="ordNext()" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right" >Next</a>-->
+	 <a data-role="button" data-transition="slide" onClick="ordNext()" data-icon="arrow-r" data-iconpos="right" class="ui-btn-right" >Next</a>
 
    
 
@@ -2634,7 +2466,7 @@
 
 
 
-<div data-role="panel" id="leftpanel_voucher" data-display="overlay" data-theme="d">
+<!--<div data-role="panel" id="leftpanel_voucher" data-display="overlay" data-theme="d">
 
 		<ul data-role="listview">
 
@@ -2654,7 +2486,7 @@
 
 		
 
-	</div>
+	</div>-->
 
 	
 
