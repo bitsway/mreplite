@@ -33,8 +33,8 @@ function onSuccess(position) {
 //var apipath='http://127.0.0.1:8000/mreporting/sync_mobile/';
 //var dmpathUrl= "http://localhost/dmpath/index.php?CID=";
 //var apipath='http://127.0.0.1:8000/mreporting/';
-var apipath=location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/mrepmobile/mrep_order_new/";
-//var apipath="http://m.businesssolutionapps.com/mrepmobile/mrep_order_new/";
+//var apipath=location.protocol + "//" + location.hostname + (location.port && ":" + location.port) + "/mrepmobile/mrep_order_new/";
+var apipath="http://m.businesssolutionapps.com/mrepmobile/mrep_order_new/";
 var cidValue=''
 var repid='';
 var password='';
@@ -79,6 +79,8 @@ $('#basicSync').click(function() {
 		 password=$("#password").val() ;
 		 if (cidValue==""||repid==""||password==""){
 			 $("#mySyncError").html('Authorization Failed');	
+			 var url = "#pageSync";
+				$(location).attr('href',url);
 		 }else{			 
 
 		if (apipath==''){
@@ -137,6 +139,8 @@ $('#basicSync').click(function() {
 				  },
 				  error: function(result) {
 					  $("#mySyncError").html(errror_str);
+					  var url = "#pageSync";
+						$(location).attr('href',url);
 				  }
 				  
 			});//end ajax
