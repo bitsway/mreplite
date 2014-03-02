@@ -374,6 +374,7 @@ function getOrder() {
 				var clientId=clientArray[1];
 				//alert (clientIdName);
 				$("#clientID_1").val(clientId);
+				$("#clientID").val(clientId);
 				$("#clientName").val(clientName);
 				//alert(clientArray);				
 				
